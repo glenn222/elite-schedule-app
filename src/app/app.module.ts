@@ -10,16 +10,20 @@ import { MyTeamsPage } from '../pages/my-teams/my-teams';
 import { TournamentsPage } from '../pages/tournaments/tournaments';
 import { GamePage } from '../pages/game/game';
 import { TeamDetailPage } from '../pages/team-detail/team-detail';
-import { TeamPage } from '../pages/team/team';
+import { TeamsPage } from '../pages/teams/teams';
+import { StandingsPage } from '../pages/standings/standings';
+import { TeamHomePage } from '../pages/team-home/team-home';
 
 @NgModule({
   declarations: [
     MyApp,
     MyTeamsPage,
     GamePage,
-    TeamPage,
+    TeamsPage,
     TeamDetailPage,
-    TournamentsPage
+    TournamentsPage,
+    StandingsPage,
+    TeamHomePage
   ],
   imports: [
     BrowserModule,
@@ -30,9 +34,11 @@ import { TeamPage } from '../pages/team/team';
     MyApp,
     MyTeamsPage,
     GamePage,
-    TeamPage,
+    TeamsPage,
     TeamDetailPage,
-    TournamentsPage
+    TournamentsPage,
+    StandingsPage,
+    TeamHomePage
   ],
   providers: [
     StatusBar,
