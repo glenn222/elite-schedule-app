@@ -13,8 +13,8 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let game of games">
+    <button *ngFor="let game of games" ion-item (click)="gameClicked($event, game)">
       {{game.opponent}}
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>

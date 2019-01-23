@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EliteScheduleApi } from '../../providers/elite-schedule-api/elite-schedule-api';
+import { GamePage } from '../game/game';
 
 import * as _ from 'lodash';
 
@@ -22,6 +23,7 @@ export class TeamDetailPage {
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad - TeamDetailPage');
     this.team = this.navParams.data;
 
     this.tourneyData = this.eliteScheduleApi.getCurrentTourney();
@@ -54,5 +56,10 @@ export class TeamDetailPage {
     else {
       return "";
     }
+  }
+
+  gameClicked($event, game) {
+    let sourceGame = this.tourneyData.games.find(g => g.id === game.gameId);
+    this.navCtrl.parent.parent.push(GamePage, sourceGame);
   }
 }
