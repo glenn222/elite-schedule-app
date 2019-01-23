@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TeamsPage } from '../teams/teams';
 import { EliteScheduleApi } from '../../providers/elite-schedule-api/elite-schedule-api';
 
@@ -21,19 +21,26 @@ export class TournamentsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private eliteScheduleApi: EliteScheduleApi) {
+    private eliteScheduleApi: EliteScheduleApi,
+    public loadingController: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('## lifecycle ## ionViewDidLoad TournamentsPage');
-    this.eliteScheduleApi.getTournaments()
+    let loader = this.loadingController.create({
+      content: 'Getting tournaments...'
+    });
+
+    loader.present().then(() => {
+      this.eliteScheduleApi.getTournaments()
       .subscribe(
         (data) => {
           this.tournaments = data;
+          loader.dismiss();
         },
         (err) => {
           console.log("ERROR: " + err);
         });
+    });
   }
 
   ionViewWillEnter() {

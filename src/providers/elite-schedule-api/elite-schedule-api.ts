@@ -29,6 +29,10 @@ export class EliteScheduleApi {
         return this.currentTourney;
       })
   }
+
+  getCurrentTourney() {
+    return this.currentTourney;
+  }
 }
 
 export interface Tournament {
