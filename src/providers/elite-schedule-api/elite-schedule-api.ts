@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the EliteScheduleApiProvider provider.
@@ -11,12 +13,21 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class EliteScheduleApi {
   private baseUrl: any = "https://elite-schedule-app-i2-abf11.firebaseio.com";
-
+  private currentTourney: any = {};
+  
   constructor(private http: HttpClient) {
   }
 
   getTournaments() {
     return this.http.get<Tournament[]>(this.baseUrl + '/tournaments.json');
+  }
+
+  getTournamentData(tourneyId) : Observable<any> {
+    return this.http.get(this.baseUrl + '/tournaments-data/' + tourneyId + '.json')
+      .map(response => {
+        this.currentTourney = response;
+        return this.currentTourney;
+      })
   }
 }
 
