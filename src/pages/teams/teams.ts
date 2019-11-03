@@ -3,7 +3,6 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TeamHomePage } from '../team-home/team-home';
 import { EliteScheduleApi } from '../../providers/elite-schedule-api/elite-schedule-api';
 import * as _ from 'lodash';
-import { callLifecycleHooksChildrenFirst } from '@angular/core/src/view/provider';
 
 
 @Component({
@@ -35,9 +34,9 @@ export class TeamsPage {
       this.eliteScheduleApi.getTournamentData(selectedTourney.id).subscribe(
         data => {
           this.allTeams = data.teams;
-  
+          
           this.allTeamDivisions = 
-            _.chain(data.teams)
+            _.chain(this.allTeams)
               .groupBy('division')
               .toPairs()
               .map(item => _.zipObject(['divisionName', 'divisionTeams'], item))
