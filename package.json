@@ -26,7 +26,7 @@
     "@ionic/storage": "2.2.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "promise-polyfill": "^8.1.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
